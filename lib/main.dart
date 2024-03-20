@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ void main() {
                 children: [
                   SizedBox(height: 10.0),
                   Text(
-                    "世界上最偉大的藝術家們",
+                    "The World Greatest Artists",
                     style: TextStyle(
                       fontSize: 30,
                       color: Colors.yellow,
@@ -29,63 +29,18 @@ void main() {
                   ),
                   SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 10.0),
+                      padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
                       child: Row(
                         children: [
-                          Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/Leonardo_da_Vinci.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  shape: BoxShape.circle)),
+                          buildArtistPicture("Leonardo_da_Vinci"),
                           SizedBox(width: 10),
-                          Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/Raffaello_Sanzio.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  shape: BoxShape.circle)),
+                          buildArtistPicture("Raffaello_Sanzio"),
                           SizedBox(width: 10),
-                          Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/Miguel_Angel.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  shape: BoxShape.circle)),
+                          buildArtistPicture("Miguel_Angel"),
                           SizedBox(width: 10),
-                          Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/Giorgio_Vasari.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  shape: BoxShape.circle)),
+                          buildArtistPicture("Giorgio_Vasari"),
                           SizedBox(width: 10),
-                          Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/Tiziano_Vecellio.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  shape: BoxShape.circle)),
+                          buildArtistPicture("Tiziano_Vecellio"),
                         ],
                       )),
                   Divider(
@@ -94,11 +49,29 @@ void main() {
                     indent: 30,
                     endIndent: 30,
                   ),
-                  Text("ArtWorks",
-                      style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.yellow,
-                          fontWeight: FontWeight.bold)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.panorama,
+                        size: 20.0,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text("ArtWorks",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.yellow,
+                              fontWeight: FontWeight.bold)),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Icon(
+                        Icons.panorama,
+                        size: 20.0,
+                      ),
+                    ],
                   ),
                   Expanded(
                     child: SingleChildScrollView(
@@ -106,140 +79,30 @@ void main() {
                       padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 20.0),
                       child: Column(
                         children: [
-                          Stack(
-                            alignment: Alignment.bottomCenter,
-                            children: [
-                              Container(
-                                width: 300,
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/The_Birth_of_Venus.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  shape: BoxShape.rectangle,
-                                  borderRadius: BorderRadius.circular(15),
-                                  border: Border.all(
-                                    width: 5,
-                                    color: Colors.brown.shade700,
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 5,
-                                child: Text(
-                                    "The Birth of Venus",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.yellow.shade300,
-                                    ),
-                                  ),
-                              )
-                            ]
+                          ArtWorkStack(
+                            artwork: "The Birth of Venus",
+                            artworkFilename: "The_Birth_of_Venus"
                           ),
                           SizedBox(
                             height: 10,
                           ),
-                          Stack(
-                            alignment: Alignment.bottomCenter,
-                            children: [
-                              Container(
-                                width: 300,
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/The_Creation_of_Adam.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  shape: BoxShape.rectangle,
-                                  borderRadius: BorderRadius.circular(15),
-                                  border: Border.all(
-                                    width: 5,
-                                    color: Colors.brown.shade700,
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 5,
-                                child:Text(
-                                  "The Creation of Adam",
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.yellow.shade300,
-                                  ),
-                                )
-                              ),
-                            ],
+                          ArtWorkStack(
+                            artwork: "The Creation of Adam",
+                            artworkFilename: "The_Creation_of_Adam"
                           ),
                           SizedBox(
                             height: 10,
                           ),
-                          Stack(
-                            alignment: Alignment.bottomCenter,
-                            children: [
-                              Container(
-                                width: 300,
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage('assets/images/The_Gleaners.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  shape: BoxShape.rectangle,
-                                  borderRadius: BorderRadius.circular(15),
-                                  border: Border.all(
-                                    width: 5,
-                                    color: Colors.brown.shade700,
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 5,
-                                child: Text(
-                                    "The Gleaners",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.yellow.shade300,
-                                    ),
-                                  ),
-                              )
-                            ]
+                          ArtWorkStack(
+                            artwork: "The Gleaners",
+                            artworkFilename: "The_Gleaners"
                           ),
                           SizedBox(
                             height: 10,
                           ),
-                          Stack(
-                            alignment: Alignment.bottomCenter,
-                            children: [
-                              Container(
-                                width: 300,
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage('assets/images/Last_Supper.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  shape: BoxShape.rectangle,
-                                  borderRadius: BorderRadius.circular(15),
-                                  border: Border.all(
-                                    width: 5,
-                                    color: Colors.brown.shade700,
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 5,
-                                child: Text(
-                                  "Last Supper",
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.yellow.shade300,
-                                  ),
-                                ),
-                              )
-                            ]
+                          ArtWorkStack(
+                            artwork: "Last Supper", 
+                            artworkFilename: "Last_Supper"
                           ),
                         ],
                       ),
@@ -253,6 +116,61 @@ void main() {
       ),
     ),
   );
+}
+
+StatelessWidget buildArtistPicture(String name) {
+  return Container(
+      width: 80,
+      height: 80,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/$name.jpg'),
+            fit: BoxFit.cover,
+          ),
+          shape: BoxShape.circle)
+  );
+}
+
+class ArtWorkStack extends StatelessWidget {
+  const ArtWorkStack({super.key, required this.artwork, required this.artworkFilename});
+
+  final String artwork;
+  final String artworkFilename;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.bottomCenter,
+      children: [
+        Container(
+          width: 300,
+          height: 200,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/$artworkFilename.jpg'),
+              fit: BoxFit.cover,
+            ),
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              width: 5,
+              color: Colors.brown.shade700,
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: 5,
+          child: Text(
+            artwork,
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.yellow.shade300,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
